@@ -15,11 +15,34 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
   int _currentIndex = 0;
   double longDuration = 0;
 
   final assetsAudioPlayer = AssetsAudioPlayer();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if(state==AppLifecycleState.resumed){
+      setState(() {
+        print("HALOOOOOOOO RESUME");
+      });
+    }else{
+      print("HALOOOOOOOOOOO YANG LAINNYA");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     StatusPlayBloc statusPlayBloc = BlocProvider.of<StatusPlayBloc>(context);

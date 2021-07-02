@@ -78,15 +78,12 @@ class _HomeState extends State<Home> {
                         artist: state.searchResponse.listSong[index].artist.nameArtist,
                         bigPictureAlbum: state.searchResponse.listSong[index].album.bigPictureAlbum,
                         previewSongFromURL: state.searchResponse.listSong[index].songPreviewUrl,
-                        isPlay: "play",
                         indexSong: index,
                       );
-                      Map map = Map<String, SongEntity>();
-                      map["SONG"] = song;
                       return GestureDetector(
                         onTap: ()async{
                           statusPlayBloc.add("play");
-                          playBloc.add(map);
+                          playBloc.add(song);
                           try{
                             await AssetsAudioPlayer.withId("ID_ONLY_ONE").open(
                               Audio.network("${state.searchResponse.listSong[index].songPreviewUrl}"),

@@ -2,25 +2,48 @@ import 'package:bloc/bloc.dart';
 import 'package:spotifyclone/bloc/FetchState.dart';
 import 'package:spotifyclone/entity/SongEntity.dart';
 
-class PlayBloc extends Bloc<Map<String, SongEntity>, PlaySongState>{
+// class PlayBloc extends Bloc<Map<String, SongEntity>, PlaySongState>{
+//   PlayBloc() : super(PlaySongEmpty());
+//
+//   @override
+//   Stream<PlaySongState> mapEventToState(Map<String, SongEntity> event) async*{
+//     var song = event["SONG"];
+//     if(song!=null){
+//       if(song.isPlay=="play"){
+//         yield PlaySongLoaded(songEntity: song);
+//       }else if(song.isPlay=="pause"){
+//         yield PlaySongPause(songEntity: song);
+//       }else{
+//         yield PlaySongEmpty();
+//       }
+//     }else{
+//       yield PlaySongEmpty();
+//     }
+//   }
+// }
+
+class PlayBloc extends Bloc<SongEntity, PlaySongState>{
   PlayBloc() : super(PlaySongEmpty());
 
   @override
-  Stream<PlaySongState> mapEventToState(Map<String, SongEntity> event) async*{
-    var song = event["SONG"];
-    if(song!=null){
-      if(song.isPlay=="play"){
-        yield PlaySongLoaded(songEntity: song);
-      }else if(song.isPlay=="pause"){
-        yield PlaySongPause(songEntity: song);
-      }else{
-        yield PlaySongEmpty();
-      }
+  Stream<PlaySongState> mapEventToState(SongEntity event) async*{
+    if(event!=null){
+      yield PlaySongLoaded(songEntity: event);
     }else{
       yield PlaySongEmpty();
     }
+    // if(song!=null){
+    //   if(song.isPlay=="play"){
+    //     yield PlaySongLoaded(songEntity: song);
+    //   }else if(song.isPlay=="pause"){
+    //     yield PlaySongPause(songEntity: song);
+    //   }else{
+    //     yield PlaySongEmpty();
+    //   }
+    // }else{
+    //   yield PlaySongEmpty();
+    // }
   }
-
 }
 
 class StatusPlayBloc extends Bloc<String, String>{
