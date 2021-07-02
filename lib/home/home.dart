@@ -1,6 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotifyclone/OptionMenu.dart';
 import 'package:spotifyclone/bloc/FetchState.dart';
 import 'package:spotifyclone/bloc/PlayBloc.dart';
 import 'package:spotifyclone/bloc/SongBloc.dart';
@@ -131,7 +132,17 @@ class _HomeState extends State<Home> {
                                   }
                                 }
                               )),
-                              IconButton(icon: Icon(Icons.more_vert), onPressed: (){}, color: Colors.white,),
+                              IconButton(icon: Icon(Icons.more_vert), onPressed: (){
+                                Navigator.of(context).push(
+                                  PageRouteBuilder(
+                                    opaque: false,
+                                    pageBuilder: (_,__,___)=>OptionMenu(songEntity: song,)
+                                  ),
+                                );
+                                // Navigator.of(context).push(
+                                //   TransparentRo
+                                // );
+                              }, color: Colors.white,),
                             ],
                           ),
                         ),

@@ -1,13 +1,12 @@
-import 'dart:ffi';
 import 'dart:math';
-
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotifyclone/SongDetailUI.dart';
 import 'package:spotifyclone/bloc/FetchState.dart';
 import 'package:spotifyclone/bloc/PlayBloc.dart';
-import 'package:spotifyclone/entity/SongEntity.dart';
+import 'package:spotifyclone/home/Playlist.dart';
 import 'package:spotifyclone/home/home.dart';
 
 class HomePage extends StatefulWidget {
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
                 backgroundColor: Color.fromARGB(255, 20, 20, 20)
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
+              icon: Icon(IconData(63512, fontFamily: CupertinoIcons.iconFont, fontPackage: CupertinoIcons.iconFontPackage)),
               label: "Playlist",
               backgroundColor: Color.fromARGB(255, 20, 20, 20)
             )
@@ -142,7 +141,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
 
   final List<Widget> _body = [
     Home(),
-    Container(child: Text("BODY 2", style: TextStyle(color: Colors.white),),)
+    PlaylistUI(),
   ];
 
   void onTabTapped(int index){
