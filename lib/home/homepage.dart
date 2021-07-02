@@ -18,8 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver{
   int _currentIndex = 0;
   double longDuration = 0;
-
   final assetsAudioPlayer = AssetsAudioPlayer();
+
   @override
   void initState() {
     super.initState();
