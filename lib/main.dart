@@ -12,23 +12,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SongBloc>(create: (context)=>SongBloc(),),
+        BlocProvider<PlayBloc>(create: (context)=>PlayBloc(),),
+        BlocProvider<StatusPlayBloc>(create: (context)=>StatusPlayBloc(),),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+        ),
+        home: HomePage(),
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider<SongBloc>(create: (context)=>SongBloc(),),
-          BlocProvider<PlayBloc>(create: (context)=>PlayBloc(),),
-        ],
-        child: HomePage(),
-      ),
-      // home: BlocProvider(
-      //     child: HomePage(),
-      //   create: (context)=>SongBloc(),
-      // ),
     );
   }
 }

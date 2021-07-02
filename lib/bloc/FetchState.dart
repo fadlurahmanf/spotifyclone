@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:spotifyclone/entity/SongEntity.dart';
 import 'package:spotifyclone/services/Response.dart';
 
 abstract class FetchState extends Equatable{
@@ -17,3 +18,26 @@ class FetchSongLoaded extends FetchState{
   @override
   List<Object> get props => [searchResponse];
 }
+
+abstract class PlaySongState extends Equatable{
+  const PlaySongState();
+  @override
+  List<Object> get props => [];
+}
+
+class PlaySongEmpty extends PlaySongState{}
+
+class PlaySongLoaded extends PlaySongState{
+  final SongEntity songEntity;
+  const PlaySongLoaded({this.songEntity}):assert(songEntity!=null);
+  @override
+  List<Object> get props => [songEntity];
+}
+
+class PlaySongPause extends PlaySongState{
+  final SongEntity songEntity;
+  const PlaySongPause({this.songEntity}):assert(songEntity!=null);
+  @override
+  List<Object> get props => [songEntity];
+}
+
