@@ -67,7 +67,7 @@ class ConnectToAPIsong{
     var result = await http.get(
       finalURL,
       headers: {
-        "x-rapidapi-key":"b6f957ca22mshae37590abcc157dp11890bjsn5307658b05a3",
+        "x-rapidapi-key":"",
         "x-rapidapi-host":"deezerdevs-deezer.p.rapidapi.com",
       }
     );
